@@ -1,11 +1,10 @@
 import React from 'react';
+import {Auth} from 'pages';
 
-function App() {
-  return (
-    <div className="wrapper">
-      <header className="App-header">Hello</header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="wrapper">
+    <Auth />
+  </div>
+);
 
 export default App;
