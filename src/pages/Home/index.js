@@ -10,6 +10,11 @@ const Auth = () => (
       avatar="https://vk.com/images/camera_100.png?ava=1"
       text="Привет! Как делa. HELLO"
       date={new Date('Sat Aug 29 2020 21:19:07')}
+      attachments={[
+        {filename: 'image.jpg', url: 'https://source.unsplash.com/user/erondu/100x100?random1'},
+        {filename: 'image.jpg', url: 'https://source.unsplash.com/user/erondu/100x100?random2'},
+        {filename: 'image.jpg', url: 'https://source.unsplash.com/user/erondu/100x100?random3'},
+      ]}
     ></Message>
     <Message
       avatar="https://vk.com/images/camera_100.png?ava=1"
