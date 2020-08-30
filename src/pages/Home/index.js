@@ -1,46 +1,45 @@
 import React from 'react';
 
-import {DialogItem} from 'components';
+import {Dialogs} from 'components';
 
 import './Home.scss';
 
 const Auth = () => (
   <section className="home">
-    <div className="dialogs">
-      <DialogItem
-        user={{fullname: 'Бэтмен', isOnline: false}}
-        message={'Этому городу нужен новый герой'}
-        unreaded={9}
-      />
-    </div>
-    <div className="dialogs">
-      <DialogItem
-        user={{fullname: 'Бэтмен', isOnline: true}}
-        message={'Этому городу нужен новый герой'}
-        unreaded={9}
-      />
-    </div>
-    <div className="dialogs">
-      <DialogItem
-        user={{fullname: 'Бэтмен', isOnline: false}}
-        message={'Этому городу нужен новый герой'}
-        unreaded={0}
-      />
-    </div>
-    <div className="dialogs">
-      <DialogItem
-        user={{fullname: 'Бэтмен', isOnline: true}}
-        message={'Этому городу нужен новый герой'}
-        unreaded={9999}
-      />
-    </div>
-    <div className="dialogs">
-      <DialogItem
-        user={{fullname: 'Бэтмен', isOnline: false}}
-        message={'Этому городу нужен новый герой'}
-        unreaded={2}
-      />
-    </div>
+    <Dialogs
+      userId={0}
+      items={[
+        {
+          _id: Math.random(),
+          text: 'Этому городу нужен новый геройc',
+          created_at: new Date(),
+          user: {
+            _id: 1,
+            fullname: 'Бэтменс',
+            isOnline: false,
+            avatar:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQoPfDG_OD4xWjfl_zYHzurRSVxNVkt64CM8g&usqp=CAU',
+          },
+        },
+
+        {
+          _id: Math.random(),
+          text: 'Человек паук, как без рук',
+          created_at: new Date('Sun Aug 29 2020 21:15:35'),
+          user: {
+            _id: 2,
+            fullname: 'Человек-паук',
+            isOnline: true,
+            avatar:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU',
+          },
+        },
+      ]}
+    />
+    {/* <Message
+      avatar="https://sun9-41.userapi.com/c10064/u95230043/e_f23590e3.jpg?ava=1"
+      isTyping
+    ></Message> */}
     {/* <Dialogs
       items={[
         {
