@@ -4,6 +4,7 @@ import {UserOutlined, LockOutlined, MailOutlined, InfoCircleTwoTone} from '@ant-
 import {Link} from 'react-router-dom';
 
 import {Button, Block} from 'components';
+import {validateField} from 'utils/helpers';
 
 const success = false;
 
@@ -24,26 +25,44 @@ const RegisterForm = props => {
             initialValues={{remember: true}}
             onSubmit={handleSubmit}
           >
+            <Form.Item
+              name="email"
+              validateStatus={validateField('email', touched, errors)}
+              help={!touched.email ? '' : errors.email}
+              hasFeedback
+            >
+              <Input
+                id="email"
+                prefix={<MailOutlined className="site-form-item-icon" />}
+                size="large"
+                placeholder="E-mail"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </Form.Item>
+
             <Form.Item name="username">
               <Input
+                id="fullname"
                 prefix={<UserOutlined className="site-form-item-icon" />}
-                placeholder="Ваше имя"
                 size="large"
+                placeholder="Ваше имя"
               />
             </Form.Item>
 
             <Form.Item
               name="password"
-              validateStatus={!touched.password ? '' : errors.password ? 'error' : 'success'}
+              validateStatus={validateField('password', touched, errors)}
               help={!touched.password ? '' : errors.password}
               hasFeedback
             >
               <Input
                 id="password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
+                size="large"
                 type="password"
                 placeholder="Пароль"
-                size="large"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -52,27 +71,11 @@ const RegisterForm = props => {
 
             <Form.Item name="repeatPassword">
               <Input
+                id="password2"
                 prefix={<LockOutlined className="site-form-item-icon" />}
+                size="large"
                 type="password"
                 placeholder="Повторите пароль"
-                size="large"
-              />
-            </Form.Item>
-
-            <Form.Item
-              name="email"
-              validateStatus={!touched.email ? '' : errors.email ? 'error' : 'success'}
-              help={!touched.email ? '' : errors.email}
-              hasFeedback
-            >
-              <Input
-                id="email"
-                prefix={<MailOutlined className="site-form-item-icon" />}
-                placeholder="E-mail"
-                size="large"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
               />
             </Form.Item>
 

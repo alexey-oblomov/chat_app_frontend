@@ -3,9 +3,14 @@ import LoginForm from '../components/LoginForm';
 import validateForm from 'utils/validate';
 
 export default withFormik({
+  enableReinitialize: true,
+  mapPropsToValues: () => ({
+    email: '',
+    password: '',
+  }),
   validate: values => {
     let errors = {};
-    validateForm({isAuth: false});
+    validateForm({isAuth: true, values, errors});
     return errors;
   },
   handleSubmit: (values, {setSubmitting}) => {
