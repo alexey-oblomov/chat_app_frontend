@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Dialogs} from 'components';
+import {Dialogs, Message} from 'components';
 
 import './Home.scss';
 
@@ -35,6 +35,11 @@ const Auth = () => (
           },
         },
       ]}
+    />
+    <Message
+      avatar="https://vk.com/images/camera_100.png?ava=1"
+      date={new Date('Sat Aug 29 2020 21:19:07')}
+      audio="https://notificationsounds.com/soundfiles/6c524f9d5d7027454a783c841250ba71/file-23_applause.wav"
     />
     {/* <Message
       avatar="https://sun9-41.userapi.com/c10064/u95230043/e_f23590e3.jpg?ava=1"
