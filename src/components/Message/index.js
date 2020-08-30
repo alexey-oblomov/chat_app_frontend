@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import {Time} from '../../components';
-import {IconReaded} from '../../components';
+import {Time, IconReaded} from '../../components';
 import './Message.scss';
 
 const Message = ({avatar, user, text, date, isMe, isReaded, attachments, isTyping}) => (
