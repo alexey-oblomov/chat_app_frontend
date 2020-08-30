@@ -1,12 +1,31 @@
 import React from 'react';
 
-import {Message} from 'components';
+import {DialogItem} from 'components';
 
 import './Home.scss';
 
 const Auth = () => (
   <section className="home">
-    <Message
+    <div className="dialogs">
+      <DialogItem />
+    </div>
+
+    {/* <Dialogs
+      items={[
+        {
+          user: {
+            fullname: 'Бэтмен',
+            avatar: null,
+          },
+          message: {
+            text: 'Этому городу нужен новый герой',
+            isReaded: false,
+            created_at: new Date(),
+          },
+        },
+      ]}
+    /> */}
+    {/* <Message
       avatar="https://vk.com/images/camera_100.png?ava=1"
       text="Привет! Как делa. HELLO"
       date={new Date('Sat Aug 29 2020 21:19:07')}
@@ -46,7 +65,7 @@ const Auth = () => (
             'https://pix10.agoda.net/hotelImages/1199068/-1/09cb9a2780bf41ad1e8f8a3d2e074754.jpg?s=1024x768',
         },
       ]}
-    ></Message>
+    ></Message> */}
   </section>
 );
 

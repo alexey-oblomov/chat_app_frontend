@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import ruLocale from 'date-fns/locale/ru';
 import classNames from 'classnames';
-import readedSvg from 'assets/img/readed.svg';
-import noReadedSvg from 'assets/img/noreaded.svg';
 
+import {Time} from '../../components';
+import {IconReaded} from '../../components';
 import './Message.scss';
 
 const Message = ({avatar, user, text, date, isMe, isReaded, attachments, isTyping}) => (
@@ -17,15 +15,7 @@ const Message = ({avatar, user, text, date, isMe, isReaded, attachments, isTypin
     })}
   >
     <div className="message__content">
-      {isMe && isReaded ? (
-        <img className="message__icon-readed" src={readedSvg} alt="readed" />
-      ) : (
-        <img
-          className="message__icon-readed message__icon-readed--no"
-          src={noReadedSvg}
-          alt="no readed"
-        />
-      )}
+      <IconReaded isMe={isMe} isReaded={isReaded} />
 
       <div className="message__avatar">
         <img src={avatar} alt={`Avatar ${user.fullname}`} />
@@ -54,7 +44,7 @@ const Message = ({avatar, user, text, date, isMe, isReaded, attachments, isTypin
         </div>
         {date && (
           <span className="message__date">
-            {formatDistanceToNow(date, {addSuffix: true, locale: ruLocale})}
+            <Time date={date} />
           </span>
         )}
       </div>
@@ -72,6 +62,8 @@ Message.propTypes = {
   user: PropTypes.object,
   attachments: PropTypes.array,
   isTyping: PropTypes.bool,
+  isMe: PropTypes.bool,
+  isReaded: PropTypes.bool,
 };
 
 export default Message;
