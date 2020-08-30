@@ -5,20 +5,10 @@ import {Link} from 'react-router-dom';
 
 import {Button, Block} from 'components';
 
-const RegisterForm = props => {
-  const success = false;
+const success = false;
 
-  const {
-    values,
-    touched,
-    errors,
-    isSubmitting,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    handleReset,
-    dirty,
-  } = props;
+const RegisterForm = props => {
+  const {values, touched, errors, handleChange, handleBlur, handleSubmit} = props;
 
   return (
     <div>
@@ -42,12 +32,21 @@ const RegisterForm = props => {
               />
             </Form.Item>
 
-            <Form.Item name="password">
+            <Form.Item
+              name="password"
+              validateStatus={!touched.password ? '' : errors.password ? 'error' : 'success'}
+              help={!touched.password ? '' : errors.password}
+              hasFeedback
+            >
               <Input
+                id="password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
                 placeholder="Пароль"
                 size="large"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
 
@@ -63,6 +62,7 @@ const RegisterForm = props => {
             <Form.Item
               name="email"
               validateStatus={!touched.email ? '' : errors.email ? 'error' : 'success'}
+              help={!touched.email ? '' : errors.email}
               hasFeedback
             >
               <Input
@@ -72,11 +72,12 @@ const RegisterForm = props => {
                 size="large"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={values.email}
               />
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" size="large">
+              <Button type="primary" size="large" onClick={handleSubmit}>
                 Зарегистрироваться
               </Button>
             </Form.Item>
