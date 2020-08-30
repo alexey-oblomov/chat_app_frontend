@@ -7,9 +7,40 @@ import './Home.scss';
 const Auth = () => (
   <section className="home">
     <div className="dialogs">
-      <DialogItem />
+      <DialogItem
+        user={{fullname: 'Бэтмен', isOnline: false}}
+        message={'Этому городу нужен новый герой'}
+        unreaded={9}
+      />
     </div>
-
+    <div className="dialogs">
+      <DialogItem
+        user={{fullname: 'Бэтмен', isOnline: true}}
+        message={'Этому городу нужен новый герой'}
+        unreaded={9}
+      />
+    </div>
+    <div className="dialogs">
+      <DialogItem
+        user={{fullname: 'Бэтмен', isOnline: false}}
+        message={'Этому городу нужен новый герой'}
+        unreaded={0}
+      />
+    </div>
+    <div className="dialogs">
+      <DialogItem
+        user={{fullname: 'Бэтмен', isOnline: true}}
+        message={'Этому городу нужен новый герой'}
+        unreaded={9999}
+      />
+    </div>
+    <div className="dialogs">
+      <DialogItem
+        user={{fullname: 'Бэтмен', isOnline: false}}
+        message={'Этому городу нужен новый герой'}
+        unreaded={2}
+      />
+    </div>
     {/* <Dialogs
       items={[
         {

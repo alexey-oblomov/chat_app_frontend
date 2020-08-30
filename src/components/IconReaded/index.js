@@ -4,16 +4,17 @@ import readedSvg from 'assets/img/readed.svg';
 import noReadedSvg from 'assets/img/noreaded.svg';
 
 const IconReaded = ({isMe, isReaded}) =>
-  isMe &&
-  (isReaded ? (
-    <img className="message__icon-readed" src={readedSvg} alt="readed" />
-  ) : (
-    <img
-      className="message__icon-readed message__icon-readed--no"
-      src={noReadedSvg}
-      alt="no readed"
-    />
-  ));
+  (isMe &&
+    (isReaded ? (
+      <img className="message__icon-readed" src={readedSvg} alt="readed" />
+    ) : (
+      <img
+        className="message__icon-readed message__icon-readed--no"
+        src={noReadedSvg}
+        alt="no readed"
+      />
+    ))) ||
+  null;
 
 IconReaded.propTypes = {
   isMe: PropTypes.bool,
