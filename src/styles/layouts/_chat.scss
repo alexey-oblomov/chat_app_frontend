@@ -1,0 +1,27 @@
+.chat {
+  display: flex;
+  background-color: #fff;
+  width: 1140px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04204);
+
+  &__sidebar {
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    &-search {
+      padding: 0 20px 20px 20px;
+
+      input {
+        background-color: #f7f8f9;
+      }
+    }
+    width: 320px;
+  }
+
+  &__dialog {
+    flex: 1;
+  }
+}
