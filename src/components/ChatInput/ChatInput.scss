@@ -11,22 +11,32 @@
     }
   }
 
-  span.anticon {
-    cursor: pointer;
-    font-size: 20px;
-    opacity: 0.5;
+  .ant-btn-circle {
+    border: 0;
+    box-shadow: none;
+    color: #202020 !important;
+    opacity: 0.4;
 
     &:hover {
       opacity: 1;
     }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  span.anticon {
+    cursor: pointer;
+    font-size: 20px;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    width: 110px;
+    width: 70px;
     justify-content: space-between;
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   input {
