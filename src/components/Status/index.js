@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './status.scss';
+import './Status.scss';
 
 const IconReaded = ({online}) => (
   <span className={classNames('status', {'status--online': online})}>

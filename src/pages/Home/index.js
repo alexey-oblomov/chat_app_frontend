@@ -2,7 +2,7 @@ import React from 'react';
 import {TeamOutlined, FormOutlined, EllipsisOutlined} from '@ant-design/icons';
 import {Input} from 'antd';
 
-import {Dialogs, Message, Status} from 'components';
+import {Dialogs, Message, Status, ChatInput} from 'components';
 
 import './Home.scss';
 const {Search} = Input;
@@ -212,6 +212,9 @@ const Auth = () => (
               },
             ]}
           ></Message>
+          <div className="chat__dialog-input">
+            <ChatInput />
+          </div>
         </div>
       </div>
     </div>
