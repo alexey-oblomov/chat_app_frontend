@@ -2,7 +2,7 @@ import React from 'react';
 import {TeamOutlined, FormOutlined, EllipsisOutlined} from '@ant-design/icons';
 import {Input} from 'antd';
 
-import {Dialogs, Message} from 'components';
+import {Dialogs, Message, Status} from 'components';
 
 import './Home.scss';
 const {Search} = Input;
@@ -155,12 +155,12 @@ const Auth = () => (
           <div className="chat__dialog-header-center">
             <b className="chat__dialog-header-username">Железный человек</b>
             <div className="chat__dialog-header-status">
-              <span className="status status--online">online</span>
+              <Status online />
             </div>
           </div>
           <EllipsisOutlined style={{fontSize: '22px'}} />
         </div>
-        <div className="chat__dialog--messages">
+        <div className="chat__dialog-messages">
           <Message
             avatar="https://vk.com/images/camera_100.png?ava=1"
             date={new Date('Sat Aug 29 2020 21:19:07')}

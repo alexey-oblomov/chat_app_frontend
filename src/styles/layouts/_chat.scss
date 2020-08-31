@@ -59,30 +59,11 @@
 
       &-center {
         text-align: center;
-
-        .status {
-          display: inline-block;
-          color: #bfbfbf;
-          position: relative;
-
-          &--online {
-            &::before {
-              background-color: #00c980;
-            }
-          }
-          &::before {
-            display: block;
-            position: absolute;
-            top: 8px;
-            left: -9px;
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 30px;
-            background-color: #d3d3d3;
-          }
-        }
       }
+    }
+
+    &-messages {
+      padding: 20px;
     }
 
     &-username {
