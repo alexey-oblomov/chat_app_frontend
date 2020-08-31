@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Dialogs, Message} from 'components';
 
 import './Home.scss';
@@ -10,11 +9,11 @@ const Auth = () => (
       userId={0}
       items={[
         {
-          _id: Math.random(),
+          _id: '5f1de2205d0f91dc7109bf1c881c53f6',
           text: 'Этому городу нужен новый геройc',
           created_at: new Date(),
           user: {
-            _id: 1,
+            _id: '5f1de2205d0f91dc7109bf1c881c53f6',
             fullname: 'Бэтменс',
             isOnline: false,
             avatar:
@@ -23,19 +22,32 @@ const Auth = () => (
         },
 
         {
-          _id: Math.random(),
+          _id: '5f1de2205d0f91dc7109bf1c881c53f6',
           text: 'Человек паук, как без рук',
           created_at: new Date('Sun Aug 29 2020 21:15:35'),
           user: {
-            _id: 2,
+            _id: '5f1de2205d0f91dc7109bf1c881c53f6',
             fullname: 'Человек-паук',
             isOnline: true,
             avatar:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU',
           },
         },
+
+        {
+          _id: '5f1de2205d0f91dc7109bf1c881c53f6',
+          text: 'Da-Ba-Boom',
+          created_at: new Date('Sun Aug 29 2020 21:15:35'),
+          user: {
+            _id: '5f1de2205d0f91dc7109bf1c881c53f6',
+            fullname: 'Инкогнито',
+            isOnline: true,
+            avatar: null,
+          },
+        },
       ]}
     />
+
     <Message
       avatar="https://vk.com/images/camera_100.png?ava=1"
       date={new Date('Sat Aug 29 2020 21:19:07')}
