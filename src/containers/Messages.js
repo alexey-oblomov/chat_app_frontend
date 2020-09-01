@@ -1,16 +1,31 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
 import {messagesActions} from 'redux/actions';
 import {Messages as BaseMessages} from 'components';
 
-const Dialogs = ({currentDialogId, fetchMessages, items}) => {
-  useEffect(() => {
-    fetchMessages(currentDialogId);
-  }, [currentDialogId, fetchMessages]);
+class Messages extends React.Component {
+  componentDidUpdate(prevProps) {
+    const {fetchMessages, currentDialogId} = this.props;
 
-  return <BaseMessages items={items} />;
-};
+    if (prevProps.currentDialogId !== this.props.currentDialogId) {
+      fetchMessages(currentDialogId);
+    }
+  }
+
+  render() {
+    const {items} = this.props;
+    return <BaseMessages items={items} />;
+  }
+}
+
+// const Dialogs = ({ currentDialogId, fetchMessages, items }) => {
+//   useEffect(() => {
+//     fetchMessages(currentDialogId);
+//   }, [currentDialogId, fetchMessages]);
+
+//   return <BaseMessages items={items} />;
+// };
 
 export default connect(
   ({dialogs, messages}) => ({
@@ -18,4 +33,4 @@ export default connect(
     items: messages.items,
   }),
   messagesActions
-)(Dialogs);
+)(Messages);
