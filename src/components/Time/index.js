@@ -4,11 +4,11 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import ruLocale from 'date-fns/locale/ru';
 
 const Time = ({date}) => {
-  return <>{formatDistanceToNow(date, {addSuffix: true, locale: ruLocale})}</>;
+  return <>{formatDistanceToNow(new Date(date), {addSuffix: true, locale: ruLocale})}</>;
 };
 
 Time.propTypes = {
-  date: PropTypes.instanceOf(Date),
+  date: PropTypes.string,
 };
 
 export default Time;
