@@ -12,23 +12,10 @@
   }
 
   .ant-btn-circle {
-    border: 0;
-    box-shadow: none;
-    color: #202020 !important;
-    opacity: 0.4;
-
-    &:hover {
-      opacity: 1;
+    span.anticon {
+      cursor: pointer;
+      font-size: 20px;
     }
-
-    &:after {
-      display: none;
-    }
-  }
-
-  span.anticon {
-    cursor: pointer;
-    font-size: 20px;
   }
 
   &__actions {
@@ -40,6 +27,9 @@
   }
 
   input {
+    height: 40px;
+    padding: 6px 11px 8px;
+    font-size: 14px;
     &:focus {
       box-shadow: none;
     }
