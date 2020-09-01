@@ -1,6 +1,7 @@
 import React from 'react';
 import orderBy from 'lodash/orderBy';
 import {Input, Empty} from 'antd';
+
 import {DialogItem} from '../';
 import './Dialogs.scss';
 

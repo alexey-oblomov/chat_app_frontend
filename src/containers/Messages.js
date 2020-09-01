@@ -1,36 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {messagesActions} from 'redux/actions';
 import {Messages as BaseMessages} from 'components';
 
-class Messages extends React.Component {
-  componentDidUpdate(prevProps) {
-    const {fetchMessages, currentDialogId} = this.props;
-
-    if (prevProps.currentDialogId !== this.props.currentDialogId) {
+const Messages = ({currentDialogId, fetchMessages, items, isLoading}) => {
+  useEffect(() => {
+    if (currentDialogId) {
       fetchMessages(currentDialogId);
     }
-  }
+  }, [currentDialogId, fetchMessages]);
 
-  render() {
-    const {items} = this.props;
-    return <BaseMessages items={items} />;
-  }
-}
-
-// const Dialogs = ({ currentDialogId, fetchMessages, items }) => {
-//   useEffect(() => {
-//     fetchMessages(currentDialogId);
-//   }, [currentDialogId, fetchMessages]);
-
-//   return <BaseMessages items={items} />;
-// };
+  return <BaseMessages items={items} isLoading={isLoading} />;
+};
 
 export default connect(
   ({dialogs, messages}) => ({
     currentDialogId: dialogs.currentDialogId,
     items: messages.items,
+    isLoading: messages.isLoading,
   }),
   messagesActions
 )(Messages);
