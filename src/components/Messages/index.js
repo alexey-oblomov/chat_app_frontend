@@ -6,13 +6,17 @@ import classNames from 'classnames';
 import {Message} from '../';
 import './Messages.scss';
 
-const Messages = ({isLoading, items}) => {
+const Messages = ({blockRef, isLoading, items}) => {
   return (
-    <div className={classNames('messages', {'messages--loading': isLoading})}>
+    <div ref={blockRef} className={classNames('messages', {'messages--loading': isLoading})}>
       {isLoading ? (
         <Spin size="large" tip="Загрузка сообщений.." />
       ) : items && !isLoading ? (
-        items.map(item => <Message key={item._id} {...item} />)
+        items.length > 0 ? (
+          items.map(item => <Message key={item._id} {...item} />)
+        ) : (
+          <Empty description="Диалог пуст" />
+        )
       ) : (
         <Empty description="Откройте диалог" />
       )}
