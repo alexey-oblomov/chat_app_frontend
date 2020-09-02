@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {SmileOutlined, CameraOutlined, AudioOutlined, SendOutlined} from '@ant-design/icons';
 import {Input, Button} from 'antd';
+import {UploadField} from '@navjobs/upload';
 
 import './ChatInput.scss';
 
@@ -19,8 +20,20 @@ const ChatInput = props => {
         placeholder="Введите текст сообщения"
       />
       <div className="chat-input__actions">
-        <Button shape="circle" icon={<CameraOutlined />} />
-
+        <UploadField
+          onFiles={files => {
+            console.log(files);
+          }}
+          containerProps={{
+            className: 'chat-input__actions-upload-btn',
+          }}
+          uploadProps={{
+            accept: '.jpg,.jpeg,.png,.gif,.bmp',
+            multiple: 'multiple',
+          }}
+        >
+          <Button shape="circle" icon={<CameraOutlined />} />
+        </UploadField>
         {value ? (
           <Button shape="circle" icon={<SendOutlined />} />
         ) : (
