@@ -26,14 +26,11 @@
       .dialogs {
         height: 100%;
         overflow: auto;
+
         &__item {
           padding: 10px 20px;
           margin-bottom: 0;
-          &.active,
-          &:hover {
-            background-color: #f3f7ff;
-            cursor: pointer;
-          }
+          cursor: pointer;
         }
       }
     }

@@ -7,7 +7,7 @@ import './Dialogs.scss';
 
 const {Search} = Input;
 
-const Dialogs = ({items, userId, onSearch, inputValue, onSelectDialog}) => (
+const Dialogs = ({items, userId, onSearch, inputValue, currentDialogId, onSelectDialog}) => (
   <div className="dialogs">
     <div className="dialogs__search">
       <Search
@@ -24,7 +24,13 @@ const Dialogs = ({items, userId, onSearch, inputValue, onSelectDialog}) => (
     </div>
     {items.length ? (
       orderBy(items, ['created_at'], ['desc']).map(item => (
-        <DialogItem onSelect={onSelectDialog} key={item._id} isMe={item._id === userId} {...item} />
+        <DialogItem
+          onSelect={onSelectDialog}
+          key={item._id}
+          isMe={item._id === userId}
+          currentDialogId={currentDialogId}
+          {...item}
+        />
       ))
     ) : (
       <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Ничего не найдено" />
