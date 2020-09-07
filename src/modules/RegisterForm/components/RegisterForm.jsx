@@ -1,101 +1,94 @@
 import React from 'react';
-import {Form, Input} from 'antd';
-import {UserOutlined, LockOutlined, MailOutlined, InfoCircleTwoTone} from '@ant-design/icons';
+import {Form, Icon} from 'antd';
 import {Link} from 'react-router-dom';
 
-import {Button, Block} from 'components';
-import {validateField} from 'utils/helpers';
+import {Button, Block, FormField} from 'components';
 
 const success = false;
 
 const RegisterForm = props => {
-  const {values, touched, errors, handleChange, handleBlur, handleSubmit} = props;
-
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+    isSubmitting,
+  } = props;
   return (
     <div>
       <div className="auth__top">
         <h2>Регистрация</h2>
-        <p>Для входа в чат вам нужно зарегистрироваться</p>
+        <p>Для входа в чат, вам нужно зарегистрироваться</p>
       </div>
       <Block>
         {!success ? (
-          <Form
-            name="normal_login"
-            className="login-form"
-            initialValues={{remember: true}}
-            onSubmit={handleSubmit}
-          >
-            <Form.Item
+          <Form onSubmit={handleSubmit} className="login-form">
+            <FormField
               name="email"
-              validateStatus={validateField('email', touched, errors)}
-              help={!touched.email ? '' : errors.email}
-              hasFeedback
-            >
-              <Input
-                id="email"
-                prefix={<MailOutlined className="site-form-item-icon" />}
-                size="large"
-                placeholder="E-mail"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Form.Item>
+              icon="mail"
+              placeholder="E-Mail"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
 
-            <Form.Item name="username">
-              <Input
-                id="fullname"
-                prefix={<UserOutlined className="site-form-item-icon" />}
-                size="large"
-                placeholder="Ваше имя"
-              />
-            </Form.Item>
+            <FormField
+              name="fullname"
+              icon="user"
+              placeholder="Ваше имя и фамилия"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
 
-            <Form.Item
+            <FormField
               name="password"
-              validateStatus={validateField('password', touched, errors)}
-              help={!touched.password ? '' : errors.password}
-              hasFeedback
-            >
-              <Input
-                id="password"
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                size="large"
-                type="password"
-                placeholder="Пароль"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </Form.Item>
+              icon="lock"
+              placeholder="Пароль"
+              type="password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
 
-            <Form.Item name="repeatPassword">
-              <Input
-                id="password2"
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                size="large"
-                type="password"
-                placeholder="Повторите пароль"
-              />
-            </Form.Item>
+            <FormField
+              name="password_2"
+              icon="lock"
+              placeholder="Повторите пароль"
+              type="password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
 
             <Form.Item>
-              <Button type="primary" size="large" onClick={handleSubmit}>
+              {isSubmitting && !isValid && <span>Ошибка!</span>}
+              <Button disabled={isSubmitting} onClick={handleSubmit} type="primary" size="large">
                 Зарегистрироваться
               </Button>
             </Form.Item>
-            <Link className="auth__register-link" to="/login">
-              Авторизоваться
+            <Link className="auth__register-link" to="/signin">
+              Войти в аккаунт
             </Link>
           </Form>
         ) : (
           <div className="auth__success-block">
             <div>
-              <InfoCircleTwoTone />
+              <Icon type="info-circle" theme="twoTone" />
             </div>
-
             <h2>Подтвердите свой аккаунт</h2>
-            <p>На вашу почту отправлено письмо с ссылкой на подтверждение аккаунта</p>
+            <p>На Вашу почту отправлено письмо с ссылкой на подтверждение аккаунта.</p>
           </div>
         )}
       </Block>
