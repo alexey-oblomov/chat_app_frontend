@@ -7,7 +7,16 @@ import {Button, Block} from 'components';
 import {validateField} from 'utils/helpers';
 
 const LoginForm = props => {
-  const {touched, errors, handleSubmit} = props;
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+    isSubmitting,
+  } = props;
 
   return (
     <div>
@@ -28,9 +37,13 @@ const LoginForm = props => {
             hasFeedback
           >
             <Input
+              id="email"
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Email"
               size="large"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
           <Form.Item name="password">
@@ -39,11 +52,15 @@ const LoginForm = props => {
               type="password"
               placeholder="Пароль"
               size="large"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" size="large">
+            {isSubmitting && !isValid && <span>Ошибка!</span>}
+            <Button type="primary" disabled={isSubmitting} onClick={handleSubmit} size="large">
               Войти в аккаунт
             </Button>
           </Form.Item>
