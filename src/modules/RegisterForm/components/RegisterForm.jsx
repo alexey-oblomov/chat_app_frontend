@@ -1,6 +1,7 @@
 import React from 'react';
-import {Form, Icon} from 'antd';
+import {Form} from 'antd';
 import {Link} from 'react-router-dom';
+import {MailOutlined, UserOutlined, InfoCircleOutlined} from '@ant-design/icons';
 
 import {Button, Block, FormField} from 'components';
 
@@ -28,7 +29,7 @@ const RegisterForm = props => {
           <Form onSubmit={handleSubmit} className="login-form">
             <FormField
               name="email"
-              icon="mail"
+              icon={<MailOutlined />}
               placeholder="E-Mail"
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -39,7 +40,7 @@ const RegisterForm = props => {
 
             <FormField
               name="fullname"
-              icon="user"
+              icon={<UserOutlined />}
               placeholder="Ваше имя и фамилия"
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -85,7 +86,7 @@ const RegisterForm = props => {
         ) : (
           <div className="auth__success-block">
             <div>
-              <Icon type="info-circle" theme="twoTone" />
+              <InfoCircleOutlined type="info-circle" theme="twoTone" />
             </div>
             <h2>Подтвердите свой аккаунт</h2>
             <p>На Вашу почту отправлено письмо с ссылкой на подтверждение аккаунта.</p>

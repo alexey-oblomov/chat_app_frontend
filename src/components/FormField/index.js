@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Icon, Input} from 'antd';
+import {Form, Input} from 'antd';
 
 import {validateField} from 'utils/helpers';
 
@@ -22,7 +22,7 @@ const FormField = ({
     >
       <Input
         id={name}
-        prefix={<Icon type={icon} style={{color: 'rgba(0,0,0,.25)'}} />}
+        prefix={icon}
         size="large"
         placeholder={placeholder}
         value={values[name]}
