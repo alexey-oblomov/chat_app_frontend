@@ -1,54 +1,37 @@
-import React from 'react';
-import {TeamOutlined, FormOutlined, EllipsisOutlined} from '@ant-design/icons';
-import {Button} from 'antd';
-
-import {Status, ChatInput} from 'components';
-import {Dialogs, Messages} from 'containers';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect} from 'react';
+import {withRouter} from 'react-router';
+import {Messages, ChatInput, Status, Sidebar} from 'containers';
+import {connect} from 'react-redux';
 
 import './Home.scss';
 
-const Auth = () => (
-  <section className="home">
-    <div className="chat">
-      <div className="chat__sidebar">
-        <div className="chat__sidebar-header">
-          <div>
-            <Button
-              shape="circle"
-              style={{display: 'inline-block', marginRight: '5px'}}
-              icon={<TeamOutlined />}
-            />
+import {dialogsActions} from 'redux/actions';
 
-            <span>Список диалогов</span>
-          </div>
-          <Button shape="circle" icon={<FormOutlined />} />
-        </div>
+const Home = props => {
+  const {setCurrentDialogId, user} = props;
+  useEffect(() => {
+    const {pathname} = props.location;
+    const dialogId = pathname.split('/').pop();
+    setCurrentDialogId(dialogId);
+  }, [props.location.pathname]);
 
-        <div className="chat__sidebar-dialogs">
-          <Dialogs userId={0} />
-        </div>
-      </div>
-
-      <div className="chat__dialog">
-        <div className="chat__dialog-header">
-          <div />
-          <div className="chat__dialog-header-center">
-            <b className="chat__dialog-header-username">Железный человек</b>
-            <div className="chat__dialog-header-status">
-              <Status online />
+  return (
+    <section className="home">
+      <div className="chat">
+        <Sidebar />
+        {user && (
+          <div className="chat__dialog">
+            <Status />
+            <Messages />
+            <div className="chat__dialog-input">
+              <ChatInput />
             </div>
           </div>
-          <Button shape="circle" style={{fontSize: '22px'}} icon={<EllipsisOutlined />} />
-        </div>
-        <div className="chat__dialog-messages">
-          <Messages />
-        </div>
-        <div className="chat__dialog-input">
-          <ChatInput />
-        </div>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-export default Auth;
+export default withRouter(connect(({user}) => ({user: user.data}), dialogsActions)(Home));
